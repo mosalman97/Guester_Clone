@@ -1,11 +1,12 @@
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
 import React from 'react';
+import CreateAccount from './src/components/screens/auth/CreateAccount';
 
 const App = () => {
   return (
     <SafeAreaView>
       <View>
-        <Text style={styles.name}>App hello salman </Text>
+        <CreateAccount />
       </View>
     </SafeAreaView>
   );
@@ -13,9 +14,4 @@ const App = () => {
 
 export default App;
 
-const styles = StyleSheet.create({
-  name: {
-    color: 'red',
-    fontSize: 40,
-  },
-});
+const styles = StyleSheet.create({});
