@@ -8,10 +8,10 @@ import {
 import React from 'react';
 
 //Logos from assets
-// import Logo from '../../../assets/svg/logo.svg';
-import Meta from '../../../assets/svg/meta.svg';
-import Apple from '../../../assets/svg/apple.svg';
-import Google from '../../../assets/svg/google.svg';
+import Logo from '../../../assets/images/svg/logo.svg';
+// import Meta from '../../../assets/svg/meta.svg';
+// import Apple from '../../../assets/svg/apple.svg';
+// import Google from '../../../assets/svg/google.svg';
 
 //contants
 import {SIZE, MainFonts} from '../../../Constants';
@@ -19,9 +19,9 @@ import {SIZE, MainFonts} from '../../../Constants';
 const CreateAccount = () => {
   return (
     <View style={styles.container}>
-      {/* <View style={styles.logocontainer}>
-        <Logo style={styles.logo}/>
-      </View> */}
+      <View style={styles.logocontainer}>
+        <Logo style={styles.logo} />
+      </View>
       <View style={styles.contentcontainer}>
         <Text style={styles.headingtext}>
           <Text style={styles.createtext}>Create</Text>New Account
@@ -42,9 +42,14 @@ const CreateAccount = () => {
           <Google />
           <Apple /> */}
         </View>
-        <Text style={styles.alreadyaccounttext}>
-          Already have an account<Text style={styles.logintext}>Login</Text>
-        </Text>
+        <View style={styles.login}>
+          <Text style={styles.alreadyaccounttext}>
+            Already have an account
+            <TouchableOpacity activeOpacity={0.8}>
+              <Text style={styles.logintext}>Login</Text>
+            </TouchableOpacity>
+          </Text>
+        </View>
       </View>
     </View>
   );
@@ -66,13 +71,8 @@ const styles = StyleSheet.create({
   button: {},
   nexttext: {},
   bottomcontainer: {},
-  iconsection:{
-
-  },
-  alreadyaccounttext:{
-
-  },
-  logintext:{
-    
-  }
+  iconsection: {},
+  alreadyaccounttext: {},
+  logintext: {},
+  login: {},
 });
