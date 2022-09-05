@@ -9,9 +9,9 @@ import React from 'react';
 
 //Logos from assets
 import Logo from '../../../assets/images/svg/logo.svg';
-// import Meta from '../../../assets/svg/meta.svg';
-// import Apple from '../../../assets/svg/apple.svg';
-// import Google from '../../../assets/svg/google.svg';
+import Meta from '../../../assets/images/svg/meta.svg';
+import Apple from '../../../assets/images/svg/apple.svg';
+import Google from '../../../assets/images/svg/google.svg';
 
 //contants
 import {SIZE, MainFonts} from '../../../Constants';
@@ -38,9 +38,9 @@ const CreateAccount = () => {
       </View>
       <View style={styles.bottomcontainer}>
         <View style={styles.iconsection}>
-          {/* <Meta />
+          <Meta />
           <Google />
-          <Apple /> */}
+          <Apple />
         </View>
         <View style={styles.login}>
           <Text style={styles.alreadyaccounttext}>
