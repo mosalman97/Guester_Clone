@@ -16,11 +16,16 @@ import Google from '../../../assets/images/svg/google.svg';
 //contants
 import {SIZE, MainFonts} from '../../../Constants';
 
+//packages
+import DropShadow from 'react-native-drop-shadow';
+
 const CreateAccount = () => {
   return (
     <View style={styles.container}>
       <View style={styles.logocontainer}>
-        <Logo style={styles.logo} />
+        <DropShadow style={styles.shadowProp}>
+          <Logo style={styles.logo} />
+        </DropShadow>
       </View>
       <View style={styles.contentcontainer}>
         <Text style={styles.headingtext}>
@@ -75,4 +80,10 @@ const styles = StyleSheet.create({
   alreadyaccounttext: {},
   logintext: {},
   login: {},
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: {width: 0, height: 3},
+    shadowOpacity: 0.4,
+    shadowRadius: 2,
+  },
 });

@@ -10,9 +10,10 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/art": "^1.2.0",
     "react": "18.0.0",
     "react-native": "0.69.4",
-    "react-native-neomorph-shadows": "^1.1.2",
+    "react-native-drop-shadow": "^0.0.5",
     "react-native-responsive-screen": "^1.4.2",
     "react-native-svg": "^13.0.0"
   },
