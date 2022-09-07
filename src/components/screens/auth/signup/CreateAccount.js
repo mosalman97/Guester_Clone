@@ -8,19 +8,20 @@ import {
 import React, {useState} from 'react';
 
 //Logos from assets
-import Logo from '../../../assets/images/svg/logo.svg';
-import Meta from '../../../assets/images/svg/meta.svg';
-import Apple from '../../../assets/images/svg/apple.svg';
-import Google from '../../../assets/images/svg/google.svg';
+import Logo from '../../../../assets/images/svg/logo.svg';
+import Meta from '../../../../assets/images/svg/meta.svg';
+import Apple from '../../../../assets/images/svg/apple.svg';
+import Google from '../../../../assets/images/svg/google.svg';
 
 //contants
-import {SIZE, MainFonts} from '../../../Constants';
+import {SIZE, MainFonts} from '../../../../Constants';
 
 //packages
 import DropShadow from 'react-native-drop-shadow';
 
 const CreateAccount = () => {
   const [isActive, setActive] = useState('inital');
+  const [phoneNumber,setPhoneNumber] = useState("");
 
   const width = () => {
     if (isActive === 'inital') {
