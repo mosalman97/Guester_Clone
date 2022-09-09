@@ -4,6 +4,7 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 import React, {useState} from 'react';
 
@@ -15,10 +16,13 @@ import {SIZE, MainFonts} from '../../../../Constants';
 
 //packages
 import DropShadow from 'react-native-drop-shadow';
+import {useRoute} from '@react-navigation/native';
 
-const OtpVerification = () => {
+const OtpVerification = ({navigation}) => {
   const [isActive, setActive] = useState('inital');
-  const [verificationCode,setVerificationCode] = useState("")
+  const [verificationCode, setVerificationCode] = useState('');
+
+  const route = useRoute();
 
   const width = () => {
     if (isActive === 'inital') {
@@ -39,50 +43,60 @@ const OtpVerification = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.logocontainer}>
-        <DropShadow style={styles.shadow}>
-          <Logo style={styles.logo} />
-        </DropShadow>
-      </View>
-      <View style={styles.contentcontainer}>
-        <Text style={styles.headingtext}>
-          <Text style={styles.createtext}>OTP </Text> Verification
-        </Text>
-        <Text style={styles.description}>
-          The Otp has been sent to {'\n'}{' '}
-          <Text style={{color: 'black'}}>+91 97854 54785</Text>.
-        </Text>
-      </View>
-      <View style={styles.inputcontainer}>
-        <TextInput
-          placeholder="Enter OTP"
-          style={[
-            styles.textinput,
-            {
-              borderWidth: width(),
-            },
-            {
-              borderColor: color(),
-            },
-          ]}
-          onPressIn={() => setActive('clicked')}
-        />
-        <TouchableOpacity style={styles.button} activeOpacity={0.8}>
-          <Text style={styles.nexttext}>Signup</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.bottomcontainer}>
-        <View style={styles.login}>
-          <TouchableOpacity activeOpacity={0.8}>
-            <Text style={styles.alreadyaccounttext}>
-              Don’t recieve code?{' '}
-              <Text style={styles.logintext}>Resend OTP</Text>
-            </Text>
+    <SafeAreaView>
+      <View style={styles.container}>
+        <View style={styles.logocontainer}>
+          <DropShadow style={styles.shadow}>
+            <Logo style={styles.logo} />
+          </DropShadow>
+        </View>
+        <View style={styles.contentcontainer}>
+          <Text style={styles.headingtext}>
+            <Text style={styles.createtext}>OTP </Text> Verification
+          </Text>
+          <Text style={styles.description}>
+            The Otp has been sent to {'\n'}{' '}
+            <Text style={{color: 'black'}}>+91 {route.params.phoneNumber}</Text>
+            .
+          </Text>
+        </View>
+        <View style={styles.inputcontainer}>
+          <TextInput
+            placeholder="Enter OTP"
+            style={[
+              styles.textinput,
+              {
+                borderWidth: width(),
+              },
+              {
+                borderColor: color(),
+              },
+            ]}
+            onPressIn={() => setActive('clicked')}
+            onChangeText={verificationCode =>
+              setVerificationCode(verificationCode)
+            }
+            value={verificationCode}
+          />
+          <TouchableOpacity
+            style={styles.button}
+            activeOpacity={0.8}
+            onPress={() => navigation.navigate('entername')}>
+            <Text style={styles.nexttext}>Signup</Text>
           </TouchableOpacity>
         </View>
+        <View style={styles.bottomcontainer}>
+          <View style={styles.login}>
+            <TouchableOpacity activeOpacity={0.8}>
+              <Text style={styles.alreadyaccounttext}>
+                Don’t recieve code?{' '}
+                <Text style={styles.logintext}>Resend OTP</Text>
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

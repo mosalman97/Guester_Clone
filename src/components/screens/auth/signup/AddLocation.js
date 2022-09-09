@@ -10,9 +10,9 @@ import React, {useState} from 'react';
 
 //Logos from assets
 import Logo from '../../../../assets/images/svg/logo.svg';
-import Meta from '../../../../assets/images/svg/meta.svg';
-import Apple from '../../../../assets/images/svg/apple.svg';
-import Google from '../../../../assets/images/svg/google.svg';
+import Location from '../../../../assets/images/svg/location.svg';
+import Place from '../../../../assets/images/svg/place.svg';
+import Target from '../../../../assets/images/svg/target.svg';
 
 //contants
 import {SIZE, MainFonts} from '../../../../Constants';
@@ -20,9 +20,9 @@ import {SIZE, MainFonts} from '../../../../Constants';
 //packages
 import DropShadow from 'react-native-drop-shadow';
 
-const CreateAccount = ({navigation}) => {
+const AddLocation = () => {
   const [isActive, setActive] = useState('inital');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [locationSelect,setLocationSelect] = useState('');
 
   const width = () => {
     if (isActive === 'inital') {
@@ -51,67 +51,51 @@ const CreateAccount = ({navigation}) => {
           </DropShadow>
         </View>
         <View style={styles.contentcontainer}>
-          <Text style={styles.headingtext}>
-            <Text style={styles.createtext}>Create </Text>New Account
-          </Text>
-          <Text style={styles.description}>
-            Sign up to find the highest rated {'\n'} Restaurants in your area!
+          <Location style={{marginRight: 12}} />
+          <Text style={{color: 'black', fontSize: SIZE.Hp('3%')}}>
+            Add your{' '}
+            <Text style={{color: '#0FBA12', fontSize: SIZE.Hp('3%')}}>
+              Location
+            </Text>
           </Text>
         </View>
         <View style={styles.inputcontainer}>
-          <TextInput
-            placeholder="+91  Phone Number"
+          <View
             style={[
-              styles.textinput,
-              {
-                borderWidth: width(),
-              },
+              styles.inputbox,
               {
                 borderColor: color(),
               },
-            ]}
-            onPressIn={() => setActive('clicked')}
-            onChangeText={phoneNumber => setPhoneNumber(phoneNumber)}
-            value={phoneNumber}
-          />
-          <TouchableOpacity
-            style={styles.button}
-            activeOpacity={0.8}
-            onPress={() => navigation.navigate('otpverification',{phoneNumber})}>
-            <Text style={styles.nexttext}>Next</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.bottomcontainer}>
-          <View style={styles.iconsection}>
-            <View style={styles.iconcontainer}>
-              <Meta />
-            </View>
-            <View
-              style={{
-                ...styles.iconcontainer,
-                marginHorizontal: SIZE.Wp('5%'),
-              }}>
-              <Google />
-            </View>
-            <View style={styles.iconcontainer}>
-              <Apple />
-            </View>
+              {
+                borderWidth: width(),
+              },
+            ]}>
+            <Place style={styles.placeicon} />
+            <TextInput
+              placeholder="Enter Location"
+              onPressIn={() => setActive('clicked')}
+              onChangeText={locationSelect => setLocationSelect(locationSelect)}
+              value={locationSelect}
+            />
           </View>
-          <View style={styles.login}>
-            <TouchableOpacity activeOpacity={0.8}>
-              <Text style={styles.alreadyaccounttext}>
-                Already have an account{' '}
-                <Text style={styles.logintext}>Login</Text>
+          <TouchableOpacity activeOpacity={0.8}>
+            <View style={styles.selectlocationcontainer}>
+              <Target />
+              <Text style={styles.selectlocationtext}>
+                Use current Location
               </Text>
-            </TouchableOpacity>
-          </View>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} activeOpacity={0.8}>
+            <Text style={styles.nexttext}>Submit</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
   );
 };
 
-export default CreateAccount;
+export default AddLocation;
 
 const styles = StyleSheet.create({
   container: {
@@ -128,16 +112,13 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
   },
   contentcontainer: {
-    alignItems: 'center',
     marginBottom: SIZE.Hp('5.5%'),
-  },
-  heading: {},
-  headingtext: {
-    fontSize: SIZE.Hp('3.2%'),
-    marginBottom: SIZE.Hp('1.8%'),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   createtext: {
-    color: '#0FBA12',
+    color: 'black',
   },
   description: {
     fontSize: SIZE.Hp('1.5%'),
@@ -146,15 +127,20 @@ const styles = StyleSheet.create({
     lineHeight: 18,
   },
   inputcontainer: {},
-  textinput: {
+  placeicon: {
+    marginRight: 10,
+  },
+  inputbox: {
+    flexDirection: 'row',
     alignSelf: 'center',
     width: SIZE.Wp('95%'),
-    paddingHorizontal: 20,
-    paddingVertical: 16,
+    paddingLeft: 10,
+    paddingVertical: 12,
     borderRadius: 8,
     borderWidth: 1,
-    marginBottom: SIZE.Hp('2%'),
+    marginBottom: SIZE.Hp('1.5%'),
   },
+  textinput: {},
   button: {
     alignSelf: 'center',
     width: SIZE.Wp('95%'),
@@ -200,5 +186,16 @@ const styles = StyleSheet.create({
   },
   login: {
     alignItems: 'center',
+  },
+  selectlocationcontainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: SIZE.Hp('2.8%'),
+  },
+  selectlocationtext: {
+    color: '#0FBA12',
+    fontSize: SIZE.Hp('2%'),
+    marginLeft: SIZE.Wp('2%'),
   },
 });

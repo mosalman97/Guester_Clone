@@ -4,6 +4,7 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 import React, {useState} from 'react';
 
@@ -16,9 +17,9 @@ import {SIZE, MainFonts} from '../../../../Constants';
 //packages
 import DropShadow from 'react-native-drop-shadow';
 
-const EnterName = () => {
+const EnterName = ({navigation}) => {
   const [isActive, setActive] = useState('inital');
-  const [verificationCode, setVerificationCode] = useState('');
+  const [name, setName] = useState('');
 
   const width = () => {
     if (isActive === 'inital') {
@@ -39,47 +40,44 @@ const EnterName = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.logocontainer}>
-        <DropShadow style={styles.shadow}>
-          <Logo style={styles.logo} />
-        </DropShadow>
-      </View>
-      <View style={styles.contentcontainer}>
-        <Text style={styles.headingtext}>
-          <Text style={styles.createtext}>What should</Text> {'\n'} Guester{' '}
-          <Text style={{color: '#0FBA12'}}>call you?</Text>
-        </Text>
-      </View>
-      <View style={styles.inputcontainer}>
-        <TextInput
-          placeholder="Full Name"
-          style={[
-            styles.textinput,
-            {
-              borderWidth: width(),
-            },
-            {
-              borderColor: color(),
-            },
-          ]}
-          onPressIn={() => setActive('clicked')}
-        />
-        <TouchableOpacity style={styles.button} activeOpacity={0.8}>
-          <Text style={styles.nexttext}>Next</Text>
-        </TouchableOpacity>
-      </View>
-      {/* <View style={styles.bottomcontainer}>
-        <View style={styles.login}>
-          <TouchableOpacity activeOpacity={0.8}>
-            <Text style={styles.alreadyaccounttext}>
-              Don’t recieve code?{' '}
-              <Text style={styles.logintext}>Resend OTP</Text>
-            </Text>
+    <SafeAreaView>
+      <View style={styles.container}>
+        <View style={styles.logocontainer}>
+          <DropShadow style={styles.shadow}>
+            <Logo style={styles.logo} />
+          </DropShadow>
+        </View>
+        <View style={styles.contentcontainer}>
+          <Text style={styles.headingtext}>
+            <Text style={styles.createtext}>What should</Text> {'\n'} Guester{' '}
+            <Text style={{color: '#0FBA12'}}>call you?</Text>
+          </Text>
+        </View>
+        <View style={styles.inputcontainer}>
+          <TextInput
+            placeholder="Full Name"
+            style={[
+              styles.textinput,
+              {
+                borderWidth: width(),
+              },
+              {
+                borderColor: color(),
+              },
+            ]}
+            onPressIn={() => setActive('clicked')}
+            onChangeText={name => setName(name)}
+            value={name}
+          />
+          <TouchableOpacity
+            style={styles.button}
+            activeOpacity={0.8}
+            onPress={() => navigation.navigate('addlocation')}>
+            <Text style={styles.nexttext}>Next</Text>
           </TouchableOpacity>
         </View>
-      </View> */}
-    </View>
+      </View>
+    </SafeAreaView>
   );
 };
 
