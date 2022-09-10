@@ -10,6 +10,7 @@ import React, {useState} from 'react';
 
 //Logos from assets
 import Logo from '../../../../assets/images/svg/logo.svg';
+import Arrow from '../../../../assets/images/svg/leftarrow.svg';
 
 //contants
 import {SIZE, MainFonts} from '../../../../Constants';
@@ -42,6 +43,12 @@ const EnterName = ({navigation}) => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
+        <TouchableOpacity
+          style={styles.backbutton}
+          activeOpacity={0.8}
+          onPress={() => navigation.navigate('otpverification')}>
+          <Arrow />
+        </TouchableOpacity>
         <View style={styles.logocontainer}>
           <DropShadow style={styles.shadow}>
             <Logo style={styles.logo} />
@@ -86,6 +93,19 @@ export default EnterName;
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: SIZE.Wp('2%'),
+  },
+  backbutton: {
+    borderColor: '#E3E3E3',
+    borderWidth: 1,
+    borderRadius: 40,
+    height: SIZE.Hp(3),
+    width: SIZE.Wp(5),
+    padding: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    left: 15,
+    top: 20,
   },
   logocontainer: {
     alignSelf: 'center',
