@@ -80,7 +80,7 @@ const AddLocation = ({navigation}) => {
             <Place style={styles.placeicon} />
             <TextInput
               placeholder="Enter Location"
-              onPressIn={() => setActive('clicked')}
+              onFocus={() => setActive('clicked')}
               onChangeText={locationSelect => setLocationSelect(locationSelect)}
               value={locationSelect}
             />

@@ -46,7 +46,7 @@ const EnterName = ({navigation}) => {
         <TouchableOpacity
           style={styles.backbutton}
           activeOpacity={0.8}
-          onPress={() => navigation.navigate('otpverification')}>
+          onFocus={() => navigation.navigate('otpverification')}>
           <Arrow />
         </TouchableOpacity>
         <View style={styles.logocontainer}>

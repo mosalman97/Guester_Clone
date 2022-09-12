@@ -13,7 +13,6 @@ import Logo from '../../../../assets/images/svg/logo.svg';
 import Meta from '../../../../assets/images/svg/meta.svg';
 import Apple from '../../../../assets/images/svg/apple.svg';
 import Google from '../../../../assets/images/svg/google.svg';
-import Showpwd from '../../../../assets/images/svg/showpwd.svg';
 
 //contants
 import {SIZE, MainFonts} from '../../../../Constants';
@@ -22,27 +21,23 @@ import {SIZE, MainFonts} from '../../../../Constants';
 import DropShadow from 'react-native-drop-shadow';
 
 const Login = ({navigation}) => {
-  const [phoneActive, setPhoneActive] = useState('inital');
-  const [passwordActive, setPasswordActive] = useState('inital');
+  const [isActive, setActive] = useState('inital');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [password, setPassword] = useState('');
 
   const width = () => {
-    if (phoneActive || phoneActive === 'inital') {
+    if (isActive === 'inital') {
       return 1;
-    } else if (phoneActive === 'number') {
+    } else if (isActive === 'clicked') {
       return 2;
-    } else if (passwordActive === 'password') {
+    } else {
       return 2;
     }
   };
 
   const color = () => {
-    if (phoneActive || phoneActive === 'inital') {
+    if (isActive === 'inital') {
       return '#E3E3E3';
-    } else if (phoneActive === 'number') {
-      return '#0FBA12';
-    } else if (passwordActive === 'passwrod') {
+    } else if (isActive === 'clicked') {
       return '#0FBA12';
     }
   };
@@ -57,10 +52,10 @@ const Login = ({navigation}) => {
         </View>
         <View style={styles.contentcontainer}>
           <Text style={styles.headingtext}>
-            <Text style={styles.createtext}>Login </Text>to your Account
+            <Text style={styles.createtext}>Login </Text>with OTP
           </Text>
           <Text style={styles.description}>
-            Welcome again, Login to your {'\n'} account have fun with foodies.
+            We'll send a four-digit OTP to {'\n'} this phone number.
           </Text>
         </View>
         <View style={styles.inputcontainer}>
@@ -75,62 +70,19 @@ const Login = ({navigation}) => {
                 borderColor: color(),
               },
             ]}
-            onPressIn={() => setPasswordActive('number')}
+            onFocus={() => setActive('clicked')}
             onChangeText={phoneNumber => setPhoneNumber(phoneNumber)}
             value={phoneNumber}
           />
-          <View
-            style={[
-              styles.inputbox,
-              {
-                borderWidth: width(),
-              },
-              {
-                borderColor: color(),
-              },
-            ]}>
-            <TextInput
-              placeholder="Enter Location"
-              onPressIn={() => setPasswordActive('password')}
-              onChangeText={password => setPassword(password)}
-              value={password}
-            />
-            <Showpwd />
-          </View>
           <TouchableOpacity
             style={styles.button}
             activeOpacity={0.8}
             onPress={() =>
               navigation.navigate('otpverification', {phoneNumber})
             }>
-            <Text style={styles.nexttext}>Next</Text>
+            <Text style={styles.nexttext}>Get OTP</Text>
           </TouchableOpacity>
-        </View>
-        <View style={styles.bottomcontainer}>
-          <View style={styles.iconsection}>
-            <View style={styles.iconcontainer}>
-              <Meta />
-            </View>
-            <View
-              style={{
-                ...styles.iconcontainer,
-                marginHorizontal: SIZE.Wp('5%'),
-              }}>
-              <Google />
-            </View>
-            <View style={styles.iconcontainer}>
-              <Apple />
-            </View>
-          </View>
-          <View style={styles.login}>
-            <TouchableOpacity activeOpacity={0.8}>
-              <Text style={styles.alreadyaccounttext}>
-                Already have an account{' '}
-                <Text style={styles.logintext}>Login</Text>
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+        </View> 
       </View>
     </SafeAreaView>
   );
@@ -163,13 +115,12 @@ const styles = StyleSheet.create({
   },
   createtext: {
     color: '#0FBA12',
-    fontFamily: MainFonts.dmMedium,
   },
   description: {
     fontSize: SIZE.Hp('1.8%'),
     textAlign: 'center',
     color: '#A0A0A0',
-    lineHeight: 18,
+    lineHeight: 20,
   },
   inputcontainer: {},
   inputbox: {
@@ -205,30 +156,6 @@ const styles = StyleSheet.create({
   nexttext: {
     color: '#FFFFFF',
     fontSize: SIZE.Hp('2%'),
-  },
-  bottomcontainer: {},
-  iconsection: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: SIZE.Hp('2%'),
-  },
-  iconcontainer: {
-    backgroundColor: '#FFFFFFB2',
-    width: SIZE.Wp(10),
-    height: SIZE.Hp(4),
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 25,
-    borderRadius: 64,
-    borderColor: '#EFEFEF',
-    borderWidth: 1,
-  },
-
-  alreadyaccounttext: {
-    fontSize: SIZE.Hp('2%'),
-    color: '#A0A0A0',
   },
   logintext: {
     color: '#0FBA12',

@@ -70,7 +70,7 @@ const CreateAccount = ({navigation}) => {
                 borderColor: color(),
               },
             ]}
-            onPressIn={() => setActive('clicked')}
+            onFocus={() => setActive('clicked')}
             onChangeText={phoneNumber => setPhoneNumber(phoneNumber)}
             value={phoneNumber}
           />

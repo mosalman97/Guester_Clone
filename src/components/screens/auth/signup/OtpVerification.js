@@ -63,7 +63,7 @@ const OtpVerification = ({navigation}) => {
           </Text>
           <Text style={styles.description}>
             The Otp has been sent to {'\n'}{' '}
-            {/* <Text style={{color: 'black'}}>+91 {route.params.phoneNumber}</Text> */}
+            <Text style={{color: 'black'}}>+91 {route.params.phoneNumber}</Text>
           </Text>
         </View>
         <View style={styles.inputcontainer}>
@@ -78,7 +78,7 @@ const OtpVerification = ({navigation}) => {
                 borderColor: color(),
               },
             ]}
-            onPressIn={() => setActive('clicked')}
+            onFocus={() => setActive('clicked')}
             onChangeText={verificationCode =>
               setVerificationCode(verificationCode)
             }
