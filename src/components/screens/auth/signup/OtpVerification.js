@@ -8,20 +8,25 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 
-//Logos from assets
+//images from assets
 import Logo from '../../../../assets/images/svg/logo.svg';
 import Arrow from '../../../../assets/images/svg/leftarrow.svg';
 
+//components
+import Welcome from '../../../inculdes/modals/Welcome';
+ 
 //contants
 import {SIZE, MainFonts} from '../../../../Constants';
 
 //packages
+import Modal from "react-native-modal";
 import DropShadow from 'react-native-drop-shadow';
 import {useRoute} from '@react-navigation/native';
 
 const OtpVerification = ({navigation}) => {
   const [isActive, setActive] = useState('inital');
   const [verificationCode, setVerificationCode] = useState('');
+  const [isWelcomeModal,setWelcomeModal] = useState(false)
 
   const route = useRoute();
 
@@ -87,7 +92,8 @@ const OtpVerification = ({navigation}) => {
           <TouchableOpacity
             style={styles.button}
             activeOpacity={0.8}
-            onPress={() => navigation.navigate('entername')}>
+            // onPress={() => navigation.navigate('entername')}
+            onPress={() => setWelcomeModal(true)}>
             <Text style={styles.nexttext}>Signup</Text>
           </TouchableOpacity>
         </View>
@@ -99,6 +105,31 @@ const OtpVerification = ({navigation}) => {
                 <Text style={styles.logintext}>Resend OTP</Text>
               </Text>
             </TouchableOpacity>
+            <Modal
+              isVisible={isWelcomeModal}
+              onBackButtonPress={() => {
+               setWelcomeModal(false);
+              }}
+              onBackdropPress={() => {
+               setWelcomeModal(false);
+              }}
+              backdropOpacity={0.4}
+              style={{
+                margin: 0,
+                screenBackgroundColor: 'transparent',
+                modalPresentationStyle: 'overCurrentContext',
+              }}
+              propagateSwipe={true}
+              useNativeDriver={false}
+              onSwipeComplete={() => setWelcomeModal(false)}
+              swipeDirection={['down']}
+              animationType={'fade'}
+              animationIn={'slideInUp'}
+              animationOut={'slideOutDown'}
+              animationInTiming={500}
+              animationOutTiming={500}>
+              <Welcome />
+            </Modal>
           </View>
         </View>
       </View>
