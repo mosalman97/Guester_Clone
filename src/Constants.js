@@ -8,7 +8,7 @@ export const SIZE = {
   Hp: Hp,
 };
 export const MainFonts = {
-  dmBold: 'Bold',
-  dmMedium:'Medium',
-  dmRegular:'Regular'
+  dmBold: 'DMSans-Bold',
+  dmMedium: 'DMSans-Medium',
+  dmRegular: 'DMSans-Regular',
 };

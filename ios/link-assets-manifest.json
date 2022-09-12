@@ -2,16 +2,16 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/assets/fonts/Bold.ttf",
-      "sha1": "ba828d9137dac8d986a3ea97ca56e390897a0b14"
+      "path": "src/assets/fonts/DMSans-Bold.ttf",
+      "sha1": "778bb35f2dbe43bb29ca15cd642649cf2e6bacfd"
     },
     {
-      "path": "src/assets/fonts/Medium.ttf",
-      "sha1": "28f97dacc140468ccd62c24da33b6c597c3c0767"
+      "path": "src/assets/fonts/DMSans-Medium.ttf",
+      "sha1": "dbe89bcef4c11289572450e6eacb77fda76c1ccb"
     },
     {
-      "path": "src/assets/fonts/Regular.ttf",
-      "sha1": "8180c148b1ddb13f1501e6cfff62335c01e682f5"
+      "path": "src/assets/fonts/DMSans-Regular.ttf",
+      "sha1": "ebeaed9f2b2f237f96c0028e86fa26294ba5da2c"
     }
   ]
 }

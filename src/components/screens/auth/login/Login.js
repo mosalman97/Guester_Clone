@@ -22,13 +22,13 @@ import {SIZE, MainFonts} from '../../../../Constants';
 import DropShadow from 'react-native-drop-shadow';
 
 const Login = ({navigation}) => {
-  const [phoneActive,setPhoneActive] = useState('inital');
-  const [passwordActive,setPasswordActive] = useState('inital');
+  const [phoneActive, setPhoneActive] = useState('inital');
+  const [passwordActive, setPasswordActive] = useState('inital');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
 
   const width = () => {
-    if (phoneActive || phoneActive  === 'inital') {
+    if (phoneActive || phoneActive === 'inital') {
       return 1;
     } else if (phoneActive === 'number') {
       return 2;
@@ -36,7 +36,6 @@ const Login = ({navigation}) => {
       return 2;
     }
   };
-
 
   const color = () => {
     if (phoneActive || phoneActive === 'inital') {
@@ -76,7 +75,7 @@ const Login = ({navigation}) => {
                 borderColor: color(),
               },
             ]}
-            onPressIn={() => setPasswordActive("number") }
+            onPressIn={() => setPasswordActive('number')}
             onChangeText={phoneNumber => setPhoneNumber(phoneNumber)}
             value={phoneNumber}
           />
@@ -164,9 +163,10 @@ const styles = StyleSheet.create({
   },
   createtext: {
     color: '#0FBA12',
+    fontFamily: MainFonts.dmMedium,
   },
   description: {
-    fontSize: SIZE.Hp('1.5%'),
+    fontSize: SIZE.Hp('1.8%'),
     textAlign: 'center',
     color: '#A0A0A0',
     lineHeight: 18,
@@ -177,7 +177,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'space-between',
     width: SIZE.Wp('95%'),
-    //   paddingLeft: 10,
     paddingHorizontal: 20,
     paddingVertical: 12,
     borderRadius: 8,
